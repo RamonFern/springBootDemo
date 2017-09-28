@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title></title>
+</head>
+<body>
+<div id="saida">
+	
+</div>
+
+</body>
+<script>
+	var pessoa = {nome: "sophia",idade: 07, dizerAlgo: function(mensagem, saida){
+		saida(mensagem);
+	}};
+
+	console.log(pessoa.nome);
+	console.log(pessoa.idade);
+	pessoa.dizerAlgo("Olá do parametro da div", function(msg){
+		var divSaida = document.getElementById("saida");
+		divSaida.innerHTML = msg;
+
+	});//div
+
+	pessoa.dizerAlgo("Olá do parametro callback", function(msg){window.alert(msg)});//alert
+	//pessoa.dizerAlgo("Olá do parametro");//console
+</script>
+</html>
