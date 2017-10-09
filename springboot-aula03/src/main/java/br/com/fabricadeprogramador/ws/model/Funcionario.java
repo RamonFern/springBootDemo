@@ -5,34 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Cliente {
+public class Funcionario {
 	
 	@Id
 	@GeneratedValue
 	private Integer id;
 	private String nome;
-	private String mae;
-	private String fone;
-	private Integer sala;
+	private String cargo;
+	private Integer faltas;
 	
-	public String getMae() {
-		return mae;
-	}
-	public void setMae(String mae) {
-		this.mae = mae;
-	}
-	public String getFone() {
-		return fone;
-	}
-	public void setFone(String fone) {
-		this.fone = fone;
-	}
-	public Integer getSala() {
-		return sala;
-	}
-	public void setSala(Integer sala) {
-		this.sala = sala;
-	}
 	
 	public Integer getId() {
 		return id;
@@ -45,6 +26,18 @@ public class Cliente {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public String getCargo() {
+		return cargo;
+	}
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+	public Integer getFaltas() {
+		return faltas;
+	}
+	public void setFaltas(Integer faltas) {
+		this.faltas = faltas;
 	}
 
 }
