@@ -1,0 +1,59 @@
+<div>
+
+ </div>
+  <h1 align="center">Cadastro de Alunos</h1><br>
+		<form class="form-horizontal">
+			  <div>
+				<label for="nome" class="col-sm-2 control-label">Nome</label>
+				<div class="col-sm-10">
+				  <input type="text" ng-model="cliente.nome" class="form-control" id="nome" placeholder="Nome"><br>
+				</div>
+				 <div>
+				<label for="endereco" class="col-sm-2 control-label">Endereço</label>
+				<div class="col-sm-10">
+				  <input type="text" ng-model="professor.endereco" class="form-control" id="endereco" placeholder="Endereço"><br>
+				</div>
+		      <div>
+				<label for="fone" class="col-sm-2 control-label">Telefone</label>
+				 <div class="col-sm-10">
+				 <input type="text" ng-model="professor.fone" class="form-control" id="fone" placeholder="Telefone"><br>
+			   </div>
+			  </div>
+			  <div>
+				<label for="Password" class="col-sm-2 control-label">Senha</label>
+				<div class="col-sm-10">
+				  <input type="password" ng-model="professor.senha" class="form-control" id="password" placeholder="Senha"><br>
+				</div>
+			  </div>
+			  
+			  <div align="center" class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+		
+				  <button type="button" ng-click="salvarCliente()" class="btn btn-info">Salvar</button>
+				  <button type="submit" ng-click="cancelarAlteracaoCliente()" class="btn btn-danger">Cancelar</button>
+		                <label>Pesquisa:</label>				  
+				  <input type="text" id="pesquisa" ng-model="pesquisaCliente" placeholder="Digite a Pesquisa">
+				  </ br></ br>
+				</div>
+				</div>
+		</form>
+            
+            <div class="container">
+			<table class="table table-striped table-hover">
+			   <th>id</th>
+               <th>Nome</th>
+			   <th></th>
+			   <th></th>
+			   <th></th>
+			   <tr ng-repeat="cli in clientes | filter:pesquisaCliente">
+				<td>{{cli.id}}</td>
+				<td>{{cli.nome}}</td>
+				<td><input type="button" value="Excluir" ng-click="excluirCliente(cli)"/></td>
+				<td><input type="button" value="Alterar" ng-click="alterarCliente(cli)"/></td>
+				<td><a href="clientes/{{cli.id}}" > Detalhe</a></td>
+			   </tr>
+			   
+            </table>
+		  </div>
+
+</div>
