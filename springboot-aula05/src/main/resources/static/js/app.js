@@ -13,6 +13,9 @@ appCliente.config(function($routeProvider, $locationProvider) {
 	}).when("/funcionario", {
 		templateUrl : 'view/funcionario.html',
 		controller : 'funcionarioController'
+	}).when("/funcionario/:funcionarioId", {
+		templateUrl : 'view/funcionario-detalhe.html',
+		controller : 'funcionarioDetalheController'
 	}).when("/estados", {
 		templateUrl : 'view/estado.html',
 		controller : 'estadoController'

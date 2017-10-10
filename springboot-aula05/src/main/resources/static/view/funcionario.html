@@ -5,7 +5,7 @@
 			  <div>
 				<label for="nome" class="col-sm-2 control-label">Nome</label>
 				<div class="col-sm-10">
-				  <input type="text" ng-model="cliente.nome" class="form-control" id="nome" placeholder="Nome"><br>
+				  <input type="text" ng-model="funcionario.nome" class="form-control" id="nome" placeholder="Nome"><br>
 				</div>
 				 <div>
 				<label for="cargo" class="col-sm-2 control-label">Cargo</label>
@@ -22,13 +22,16 @@
 			  <div align="center" class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 		
-				  <button type="button" ng-click="salvarCliente()" class="btn btn-info">Salvar</button>
-				  <button type="submit" ng-click="cancelarAlteracaoCliente()" class="btn btn-danger">Cancelar</button>
+				  <button type="button" ng-click="salvarFuncionario()" class="btn btn-info">Salvar</button>
+				  <button type="submit" ng-click="cancelarAlteracaoFuncionario()" class="btn btn-danger">Cancelar</button>
 		                <label>Pesquisa:</label>				  
-				  <input type="text" id="pesquisa" ng-model="pesquisaCliente" placeholder="Digite a Pesquisa">
+				  <input type="text" id="pesquisa" ng-model="pesquisaFuncionario" placeholder="Digite a Pesquisa">
 				  </ br></ br>
 				</div>
 				</div>
+				
+				total de Funcionários: {{funcionarios.length}}
+				
 		</form>
             
             <div class="container">
@@ -40,15 +43,17 @@
 			   <th></th>
 			   <th></th>
 			   <th></th>
-			   <tr ng-repeat="cli in clientes | filter:pesquisaCliente">
-				<td>{{cli.id}}</td>
-				<td>{{cli.nome}}</td>
-				<td>{{cli.mae}}</td>
-				<td>{{cli.fone}}</td>
-				<td>{{cli.sala}}</td>
-				<td><input type="button" value="Excluir" ng-click="excluirCliente(cli)"/></td>
-				<td><input type="button" value="Alterar" ng-click="alterarCliente(cli)"/></td>
-				<td><a href="clientes/{{cli.id}}" > Detalhe</a></td>
+			   <tr ng-repeat="func in funcionarios | filter:pesquisaFuncionario">
+				<td>{{func.id}}</td>
+				<td>{{func.nome}}</td>
+				<td>{{func.cargo}}</td>
+				<td>{{func.faltas}}</td>
+				<td></td>
+				<td></td>
+				<td></td>				
+				<td><input type="button" value="Excluir" ng-click="excluirFuncionario(func)"/></td>
+				<td><input type="button" value="Alterar" ng-click="alterarFuncionario(func)"/></td>
+				<td><a href="funcionario/{{func.id}}" > Detalhe</a></td>
 			   </tr>
 			   
             </table>

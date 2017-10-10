@@ -66,7 +66,4 @@ public class ClienteController {
 		return new ResponseEntity<>(clienteAlterado, HttpStatus.OK);
 	}
 
-
-	
-
 }

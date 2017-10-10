@@ -30,7 +30,7 @@ appCliente.controller ("clienteController", function  ($scope, $http){
 			console.log(response.status);
 			
 		});
-	}
+	};
 	
 	$scope.excluirCliente=function(cliente){
 		$http({method:'DELETE', url:'http://localhost:8080/clientes/'+cliente.id})
