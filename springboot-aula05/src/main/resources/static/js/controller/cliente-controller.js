@@ -19,17 +19,24 @@ appCliente.controller ("clienteController", function  ($scope, $http){
 	
 	$scope.salvarCliente= function (){
 		
+		if($scope.frmCliente.$valid){
+		
 		$http({method:'POST', url:'http://localhost:8080/clientes',data:$scope.cliente})
 		.then(function (response){
 			//$scope.clientes.push(response.data) ;
 			carregarClientes();
 			$scope.cancelarAlteracaoCliente();
+			$scope.frmCliente.$setPristine(true);
+			
 			
 		} , function (response){
 			console.log(response.data);
 			console.log(response.status);
 			
 		});
+		}else{
+			window.alert("Dados Invalidos");
+		}
 	};
 	
 	$scope.excluirCliente=function(cliente){

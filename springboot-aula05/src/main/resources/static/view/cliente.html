@@ -2,27 +2,30 @@
 
  </div>
   <h1 align="center">Cadastro e Manutenção de Alunos</h1><br>
-		<form class="form-horizontal">
+		<form class="form-horizontal" novalidate name="frmCliente">
 			  <div>
 				<label for="nome" class="col-sm-2 control-label">Nome</label>
 				<div class="col-sm-10">
-				  <input type="text" ng-model="cliente.nome" class="form-control" id="nome" placeholder="Nome"><br>
+				  <input type="text" ng-model="cliente.nome" ng-minlength="10" required name="txtNome" class="form-control" id="nome" placeholder="Nome">
+				  <span ng-show="frmCliente.txtNome.$error.required && frmCliente.txtNome.$dirty">Campo nome Obrigatorio!</span>
+				  <span ng-show="frmCliente.txtNome.$error.minlength">Campo nome não pode ter menos de 10 caracteres!</span><br>
 				</div>
 				 <div>
 				<label for="mae" class="col-sm-2 control-label">Nome da Mãe</label>
 				<div class="col-sm-10">
-				  <input type="text" ng-model="cliente.mae" class="form-control" id="mae" placeholder="Nome da Mãe"><br>
+				  <input type="text" ng-model="cliente.mae" ng-minlength="10" required class="form-control" id="mae" placeholder="Nome da Mãe"><br>
 				</div>
 		      <div>
 				<label for="fone" class="col-sm-2 control-label">Telefone</label>
 				 <div class="col-sm-10">
-				 <input type="text" ng-model="cliente.fone" class="form-control" id="fone" placeholder="Telefone"><br>
+				 <input type="text" ng-model="cliente.fone" ng-minlength="8" required name="txtFone" class="form-control" id="fone" placeholder="Telefone" ng-pattern="/^\d{4,5}-\d{4}$/">
+				 <span ng-show="frmCliente.txtFone.$error.pattern"> O campo telefone deve ter o formato xxxxx-xxxx!</span><br>
 			   </div>
 			  </div>
 			  <div>
 				<label for="sala" class="col-sm-2 control-label">Sala</label>
 				<div class="col-sm-10">
-				  <input type="text" ng-model="cliente.sala" class="form-control" id="sala" placeholder="Sala"><br>
+				  <input type="text" ng-model="cliente.sala" required class="form-control" id="sala" placeholder="Sala"><br>
 				</div>
 			  </div>
 			  
@@ -30,14 +33,15 @@
 				<div class="col-sm-offset-2 col-sm-10">
 		
 				  <button type="button" ng-click="salvarCliente()" class="btn btn-info">Salvar</button>
-				  <button type="submit" ng-click="cancelarAlteracaoCliente()" class="btn btn-danger">Cancelar</button>
+				  <button type="submit" ng-click="cancelarAlteracaoCliente()" class="btn btn-danger" ng-disabled="frmCliente.txtNome.$invalid">Cancelar</button>
 		                <label>Pesquisa:</label>				  
 				  <input type="text" id="pesquisa" ng-model="pesquisaCliente" placeholder="Digite a Pesquisa">
-				  </ br></ br>
+				  <br /><br />
+				  
 				</div>
 				</div>
 				
-				total de Alunos: {{clientes.length}}
+				Total de Alunos: {{clientes.length}}
 				
 		</form>
             
@@ -48,18 +52,17 @@
                <th>Mãe</th>
                <th>Telefone</th>
                <th>Sala</th>
-			   <th></th>
-			   <th></th>
-			   <th></th>
+			   <th>Opções</th>
+			   
 			   <tr ng-repeat="cli in clientes | filter:pesquisaCliente">
 				<td>{{cli.id}}</td>
 				<td>{{cli.nome}}</td>
 				<td>{{cli.mae}}</td>
 				<td>{{cli.fone}}</td>
 				<td>{{cli.sala}}</td>
-				<td><input type="button" value="Excluir" ng-click="excluirCliente(cli)"/></td>
-				<td><input type="button" value="Alterar" ng-click="alterarCliente(cli)"/></td>
-				<td><a href="clientes/{{cli.id}}" > Detalhe</a></td>
+				<td><input type="button" value="Excluir" ng-click="excluirCliente(cli)"/>
+				<input type="button" value="Alterar" ng-click="alterarCliente(cli)"/>
+				<a href="clientes/{{cli.id}}" > Detalhe</a></td>
 			   </tr>
 			   
             </table>
