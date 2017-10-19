@@ -63,6 +63,12 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1206-jdbc42</version>
 		</dependency>
+		<dependency>
+		   <groupId>io.jsonwebtoken</groupId>
+		   <artifactId>jjwt</artifactId>
+		   <version>0.6.0</version>
+        </dependency>
+		
 
 
 

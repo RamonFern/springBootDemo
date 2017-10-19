@@ -19,10 +19,17 @@ appCliente.config(function($routeProvider, $locationProvider) {
 	}).when("/estados", {
 		templateUrl : 'view/estado.html',
 		controller : 'estadoController'
+	}).when("/login", {
+		templateUrl : 'view/login.html',
+		controller : 'loginController'
 	}).otherwise({
 		rediretTo : '/'
 	});
 	
 	$locationProvider.html5Mode(true);
 	
+});
+
+appCliente.config(function ($httpProvider){
+	$httpProvider.interceptors.push("tokenInterceptor");
 });
